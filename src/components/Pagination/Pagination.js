@@ -6,14 +6,14 @@ const Pagination = ({ numeroPagina, setPageNumber }) => {
   };
 
   let prev = () => {
-    if (numeroPagina === 1) return;
+    // if (numeroPagina === 1) return;
     setPageNumber((x) => x - 1);
   };
 
   return (
     <div className="container d-flex justify-content-center gap-5 my-5">
       Pagination
-      <button onClick={prev} className="btn btn-primary">
+      <button onClick={prev} disabled = {numeroPagina === 1} className="btn btn-primary">
         Prev
       </button>
       <button onClick={next} className="btn btn-primary">
