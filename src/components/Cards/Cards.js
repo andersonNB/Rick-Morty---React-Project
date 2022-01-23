@@ -3,9 +3,6 @@ import styles from "./Cards.module.scss";
 
 const Cards = ({ results }) => {
   let display;
-
-  console.log(results);
-
   if (results) {
     display = results.map((x) => {
       let { id, name, image, location, status } = x;
