@@ -9,17 +9,15 @@ const Filters = () => {
       <div className="text-center fw-bold fs-4 mb-2">Filter</div>
       <div
         style={{ cursor: "pointer" }}
-        className="text-center text-primary text-decoration-underline"
+        className="text-center text-primary text-decoration-underline mb-4"
       >
         Clear Filters
       </div>
 
       <div className="accordion" id="accordionExample">
-        <Gender></Gender>
-
-        <Species></Species>
-
         <Status></Status>
+        <Species></Species>
+        <Gender></Gender>
       </div>
     </div>
   );
