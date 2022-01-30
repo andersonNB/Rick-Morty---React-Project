@@ -11,10 +11,13 @@ function App() {
   //Con esta variables controlamos en que página estamos
   let [pageNumber, setPageNumber] = useState(1);
   let [search, setSearch] = useState("");
+  let [status, setStatus] = useState("");
+  let [gender, setGender] = useState("");
+  const [species, setSpecies] = useState("");
   let [fetchedData, updateFetchedData] = useState([]);
   let { info, results } = fetchedData;
 
-  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`;
+  let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
   useEffect(() => {
     (async function () {
@@ -31,7 +34,7 @@ function App() {
       <Search setPageNumber={setPageNumber} setSearch={setSearch}></Search>
       <div className="container">
         <div className="row">
-          <Filters></Filters>
+          <Filters setStatus={setStatus} setPageNumber={setPageNumber} setGender={setGender} setSpecies={setSpecies}></Filters>
           <div className="col-8">
             <div className="row">
               <Cards results={results}></Cards>
