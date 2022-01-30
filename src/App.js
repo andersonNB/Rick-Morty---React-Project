@@ -6,8 +6,28 @@ import Cards from "./components/Cards/Cards";
 import Filters from "./components/Filters/Filters";
 import Pagination from "./components/Pagination/Pagination";
 import Search from "./components/Search/Search";
+import Navbar from "./components/Navbar/Navbar";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Episodes from "./Pages/Episodes";
+import Location from "./Pages/Location";
 
 function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Navbar></Navbar>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/episodes" element={<Episodes></Episodes>}></Route>
+        <Route path="/location" element={<Location></Location>}></Route>
+      </Routes>
+    </Router>
+  );
+}
+
+const Home = () => {
   //Con esta variables controlamos en que página estamos
   let [pageNumber, setPageNumber] = useState(1);
   let [search, setSearch] = useState("");
@@ -28,13 +48,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-center ubuntu my-4">
-        Rick & Morty <span className="text-primary">Wiki</span>
-      </h1>
       <Search setPageNumber={setPageNumber} setSearch={setSearch}></Search>
       <div className="container">
         <div className="row">
-          <Filters setStatus={setStatus} setPageNumber={setPageNumber} setGender={setGender} setSpecies={setSpecies}></Filters>
+          <Filters
+            setStatus={setStatus}
+            setPageNumber={setPageNumber}
+            setGender={setGender}
+            setSpecies={setSpecies}
+          ></Filters>
           <div className="col-8">
             <div className="row">
               <Cards results={results}></Cards>
@@ -50,6 +72,6 @@ function App() {
       ></Pagination>
     </div>
   );
-}
+};
 
 export default App;
